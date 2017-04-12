@@ -38,6 +38,7 @@
 'use strict';
 
 var precacheConfig = <%= precacheConfig %>;
+var shellUrlToFetch = '<%= shellUrlToFetch %>';
 var cacheName = 'sw-precache-<%= version %>-<%= cacheId %>-' + (self.registration ? self.registration.scope : '');
 
 <% if (handleFetch) { %>
@@ -47,6 +48,10 @@ var ignoreUrlParametersMatching = [<%= ignoreUrlParametersMatching %>];
 <% Object.keys(externalFunctions).sort().forEach(function(functionName) {%>
 var <%- functionName %> = <%= externalFunctions[functionName] %>;
 <% }); %>
+
+if (shellUrlToFetch) {
+  precacheConfig.push([shellUrlToFetch, 'shell-hash']);
+}
 
 var hashParamName = '_sw-precache';
 var urlsToCacheKeys = new Map(

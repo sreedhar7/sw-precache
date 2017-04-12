@@ -98,6 +98,9 @@ function setDefaults(cli, configFileFlags) {
   compositeFlags.templateFilePath = compositeFlags.templateFilePath ||
     configFileFlags.templateFilePath;
 
+  compositeFlags.shellUrlToFetch = compositeFlags.shellUrlToFetch ||
+    configFileFlags.shellUrlToFetch;
+
   compositeFlags.maximumFileSizeToCacheInBytes =
     compositeFlags.maximumFileSizeToCacheInBytes ||
     configFileFlags.maximumFileSizeToCacheInBytes;
